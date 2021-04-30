@@ -158,27 +158,34 @@ function makeResponsive() {
         // crate linear scales
         var xLinearScale = xScale(demoData, selectedXAxis, chartWidth);
         var yLinearScale = yScale(demoData, selectedYAxis, chartHeight);
+
         // initial axis functions
         var bottomAxis = d3.axisBottom(xLinearScale);
         var leftAxis = d3.axisLeft(yLinearScale);
+
         //  append x axis
         var xAxis = chartGroup.append("g")
             .attr("transform", `translate(0, ${chartHeight})`)
             .call(bottomAxis);
+
         //  append y axis
         var yAxis = chartGroup.append("g")
             .call(leftAxis);
+
         //  datat for circles
         var circlesGroup = chartGroup.selectAll("circle")
             .data(demoData);
+
         // bind data
         var elemEnter = circlesGroup.enter();
+
         // create circles
         var circle = elemEnter.append("circle")
             .attr("cx", d => xLinearScale(d[selectedXAxis]))
             .attr("cy", d => yLinearScale(d[selectedYAxis]))
             .attr("r", 15)
             .classed("stateCircle", true);
+
         // circle text
         var circleText = elemEnter.append("text")
             .attr("x", d => xLinearScale(d[selectedXAxis]))
@@ -186,8 +193,10 @@ function makeResponsive() {
             .attr("dy", ".35em")
             .text(d => d.abbr)
             .classed("stateText", true);
+
         // update tool tip
         var circlesGroup = updateToolTip(selectedXAxis, selectedYAxis, circle, circleText);
+
         // add labels
         var xLabelsGroup = chartGroup.append("g")
             .attr("transform", `translate(${chartWidth / 2}, ${chartHeight + 20})`);
@@ -236,13 +245,11 @@ function makeResponsive() {
         // x listener
         xLabelsGroup.selectAll("text")
             .on("click", function () {
+               
                 // get selected label
-
                 selectedXAxis = d3.select(this).attr("value");
-
                 // update scale
                 xLinearScale = xScale(demoData, selectedXAxis, chartWidth);
-
                 // render axis
                 xAxis = renderXAxes(xLinearScale, xAxis)
                 
