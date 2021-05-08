@@ -123,9 +123,9 @@ function makeResponsive() {
     }
 
     //setting up the svg parameters
-    var svgHeight = window.innerHeight / 1.5;
-    var svgWidth = window.innerWidth / 1.5;
-    var margin = { top: 50, right: 50, bottom: 100, left: 80 };
+    var svgWidth = 960;
+    var svgHeight = 500;
+    var margin = { top: 20, right: 40, bottom: 130, left: 100 };
 
     //  chart area
     var chartHeight = svgHeight - margin.top - margin.bottom;
@@ -207,7 +207,7 @@ function makeResponsive() {
             .classed("active", true)
             .text("In Poverty %");
         var ageLabel = xLabelsGroup.append("text")
-            .attr("x", 0)
+            .attr("x", -45)
             .attr("y", 40)
             .attr("value", "age") // listener
             .attr("inactive", true)
@@ -297,6 +297,7 @@ function makeResponsive() {
         yLinearScale = yScale(demoData, selectedYAxis, chartHeight);
         //  update the axis
         yAxis = renderYAxes(yLinearScale, yAxis);
+    
     // move between the selections
     if (selectedYAxis === "healthcare") {
        healthcareLabel
