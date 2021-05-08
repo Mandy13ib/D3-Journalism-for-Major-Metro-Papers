@@ -125,7 +125,7 @@ function makeResponsive() {
     //setting up the svg parameters
     var svgHeight = window.innerHeight / 1.5;
     var svgWidth = window.innerWidth / 1.5;
-    var margin = { top: 50, right: 50, bottom: 80, left: 100 };
+    var margin = { top: 50, right: 50, bottom: 100, left: 80 };
 
     //  chart area
     var chartHeight = svgHeight - margin.top - margin.bottom;
